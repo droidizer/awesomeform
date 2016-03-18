@@ -20,7 +20,7 @@
 
 ## Known Issues
 
-We strongly recommend using following guidelines:
+I recommend taking a look at missing features:
 
 1. Missing fab menu icon
 
@@ -46,7 +46,7 @@ Download build here: https://rink.hockeyapp.net/apps/5935a969ed07402e933e845f1dd
 	
 ## Backend
 
-[Github Backend API](https://0523aec2.ngrok.io/)
+[Backend API on ngrok: 48 hours only](https://0523aec2.ngrok.io/)
 
 ## Contributor
 
