@@ -30,6 +30,8 @@ I recommend taking a look at missing features:
 
 4. Missing dynamic UI based on the validation form
 
+Note: Additional case like connectivity is handled.
+
 ## How to install
 
 ### HockeyApp
