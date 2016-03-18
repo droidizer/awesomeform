@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by greymatter on 14/03/16.
  */
-public class BitcoinRequestInterceptor implements RequestInterceptor {
+public class RemoteRequestInterceptor implements RequestInterceptor {
     @Override
     public void onHeadersAdded(Map<String, String> map) {
 
@@ -22,7 +22,7 @@ public class BitcoinRequestInterceptor implements RequestInterceptor {
 
     @Override
     public WaspRetryPolicy getRetryPolicy() {
-        return new WaspRetryPolicy(3000, 2, 1.5f);
+        return new WaspRetryPolicy(7200, 2, 1.5f);
     }
 
     @Override

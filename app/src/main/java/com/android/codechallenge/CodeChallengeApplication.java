@@ -11,7 +11,7 @@ import com.common.android.utils.ContextHelper;
 /**
  * Created by greymatter on 14/03/16.
  */
-public class BitCoinApplication extends Application {
+public class CodeChallengeApplication extends Application {
     final ActivityLifecycleCallbacks activityLifecycleCallbacks = createActivityCallBacks();
 
     private ActivityLifecycleCallbacks createActivityCallBacks() {

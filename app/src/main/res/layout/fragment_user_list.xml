@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/users_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"/>
+
+    <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/floating_menu"
+            android:layout_margin="@dimen/padding_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            fab:menu_colorNormal="@color/dark_red"
+            fab:menu_colorPressed="@color/light_red"
+            fab:menu_colorRipple="@color/light_red"
+            android:layout_gravity="bottom|right"/>
+
+</RelativeLayout>

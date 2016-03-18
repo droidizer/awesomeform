@@ -1,7 +1,8 @@
 package com.android.codechallenge.network;
 
 import android.widget.Toast;
-import com.android.codechallenge.model.BitcoinResponseModel;
+import com.android.codechallenge.model.UserInfo;
+import com.android.codechallenge.model.UserResponseModel;
 import com.orhanobut.wasp.WaspError;
 
 import static com.common.android.utils.ContextHelper.getContext;
@@ -15,17 +16,16 @@ public class Errorhandler {
     }
 
     public static void handleWaspError(WaspError waspError) {
-        final BitcoinResponseModel error = BitcoinResponseModel.from(waspError);
-        showError(error);
+
     }
 
-    public static void showError(BitcoinResponseModel error) {
+    public static void showError(UserInfo error) {
         Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
     }
 
     public static void showError(WaspError waspError) {
-        final BitcoinResponseModel error = BitcoinResponseModel.from(waspError);
-        showError(error);
+      //  final UserData error = UserData.from(waspError);
+        // showError(error);
     }
 }
 
