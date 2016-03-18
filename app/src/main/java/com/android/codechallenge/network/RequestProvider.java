@@ -57,12 +57,14 @@ public class RequestProvider {
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT);
+                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
+                ;
             }
         });
     }
+
     public static WaspRequest updateInfo(final UserInfo userInfo, final ICallback<UserInfo> callback) {
-        return networkService().updateInfo(userInfo ,new Callback<UserInfo>() {
+        return networkService().updateInfo(userInfo, new Callback<UserInfo>() {
             @Override
             public void onSuccess(Response response, UserInfo userInfo) {
                 callback.onSuccess(userInfo);
@@ -70,7 +72,7 @@ public class RequestProvider {
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT);
+                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
 
             }
         });
@@ -80,12 +82,13 @@ public class RequestProvider {
         return networkService().formConstraints(new Callback<PersonalInfoForm>() {
             @Override
             public void onSuccess(Response response, PersonalInfoForm formValidationData) {
-            callback.onSuccess(formValidationData);
+                callback.onSuccess(formValidationData);
             }
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT);
+                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
+                ;
             }
         });
     }

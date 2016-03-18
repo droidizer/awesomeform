@@ -1,19 +1,22 @@
 package com.android.codechallenge.ui.user;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
-import com.android.codechallenge.ui.BaseFragment;
-import com.common.android.utils.ContextHelper;
-import com.common.android.utils.ui.recyclerView.DataBindAdapter;
-import com.common.android.utils.ui.recyclerView.SpacesItemDecoration;
-import com.github.clans.fab.FloatingActionMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import butterknife.Bind;
 import com.android.codechallenge.R;
 import com.android.codechallenge.model.UserInfo;
+import com.android.codechallenge.ui.BaseFragment;
+import com.android.codechallenge.utils.ItemDivider;
+import com.common.android.utils.ContextHelper;
 import com.common.android.utils.interfaces.ICallback;
+import com.common.android.utils.ui.recyclerView.DataBindAdapter;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import org.jetbrains.annotations.NotNull;
@@ -32,18 +35,21 @@ public class UsersFragment extends BaseFragment {
     RecyclerView usersList;
     @NonNull
     @Bind(R.id.floating_menu)
-    FloatingActionMenu floatingMenu;
-    
+    FloatingActionMenu fab;
+
     DataBindAdapter<UserInfo> usersAdapter;
 
     @Override
     protected void onViewCreated(Bundle savedInstanceState) {
 
-        floatingMenu.removeAllMenuButtons();
-        floatingMenu.addMenuButton(createFloatingActionButton(R.string.app_name, new View.OnClickListener() {
+        fab.removeAllMenuButtons();
+        fab.addMenuButton(createFloatingActionButton(R.string.app_name, new View.OnClickListener() {
             @Override
-            public void onClick(View view) { showUserFormFragment(); }
+            public void onClick(View view) {
+                showUserFormFragment();
+            }
         }));
+
         Crouton.makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM);
 
         setupRecyclerView();
@@ -55,7 +61,7 @@ public class UsersFragment extends BaseFragment {
                     return;
 
                 for (final UserInfo item : userInfos) {
-                    if(isUserInfoNull(item))
+                    if (isUserInfoNull(item))
                         return;
 
                     usersAdapter.add(item, UserDataBinder.class);
@@ -65,18 +71,20 @@ public class UsersFragment extends BaseFragment {
     }
 
     private boolean isUserInfoNull(@NonNull final UserInfo userInfo) {
-        return (userInfo.firstName==null && userInfo.gender==null && userInfo.dateOfBirth==null);
+        return (userInfo.firstName == null && userInfo.gender == null && userInfo.dateOfBirth == null);
     }
 
     private void setupRecyclerView() {
         usersList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        usersList.addItemDecoration(new SpacesItemDecoration(2));
+        usersList.addItemDecoration(new ItemDivider(ContextHelper.getContext(), R.drawable.item_divider));
         usersAdapter = new DataBindAdapter<>();
         usersList.setAdapter(usersAdapter);
     }
 
     @Override
-    public int getLayout() { return R.layout.fragment_user_list; }
+    public int getLayout() {
+        return R.layout.fragment_user_list;
+    }
 
     @NotNull
     @Override

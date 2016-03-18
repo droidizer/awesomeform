@@ -9,17 +9,17 @@ import java.util.List;
  */
 public class Fields {
 
-        @SerializedName("fieldName")
-        private String fieldName;
+    @SerializedName("fieldName")
+    private String fieldName;
 
-        @SerializedName("fieldCaption")
-        private String fieldCaption;
+    @SerializedName("fieldCaption")
+    private String fieldCaption;
 
-        @SerializedName("fieldType")
-        private String fieldType;
+    @SerializedName("fieldType")
+    private String fieldType;
 
-       @SerializedName("validation")
-        private List<Validation> validation;
+    @SerializedName("validation")
+    private List<Validation> validation;
 
     @Override
     public boolean equals(Object o) {

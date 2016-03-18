@@ -18,7 +18,6 @@ import com.android.codechallenge.model.UserInfo;
 import com.android.codechallenge.ui.BaseFragment;
 import com.common.android.utils.ContextHelper;
 import com.common.android.utils.interfaces.ICallback;
-import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,15 +29,7 @@ import static de.keyboardsurfer.android.widget.crouton.Crouton.makeText;
  * Created by greymatter on 17/03/16.
  */
 public class UserFormFragment extends BaseFragment {
-    @NonNull
-    @Bind(R.id.input_layout_name)
-    TextInputLayout layoutName;
-    @NonNull
-    @Bind(R.id.input_layout_gender)
-    TextInputLayout layoutGender;
-    @NonNull
-    @Bind(R.id.input_layout_dob)
-    TextInputLayout layoutDob;
+
     @NonNull
     @Bind(R.id.input_name)
     EditText name;
@@ -78,14 +69,21 @@ public class UserFormFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 final UserInfo newData = new UserInfo();
-                newData.setFirstName(name.getText().toString().trim());
-                newData.setGender(gender.getText().toString().trim());
-                newData.setDateOfBirth(dob.getText().toString().trim());
+                final String inputName = name.getText().toString().trim();
+                final String inputGender = gender.getText().toString().trim();
+                final String inputDob = dob.getText().toString().trim();
+                newData.setFirstName(inputName);
+                newData.setGender(inputGender);
+                newData.setDateOfBirth(inputDob);
+                if (TextUtils.isEmpty(inputName) && TextUtils.isEmpty(inputGender) && TextUtils.isEmpty(inputGender)) {
+                    makeText(ContextHelper.getContext(), R.string.not_saved, Style.INFO).show();
+                    return;
+                }
 
                 updateInfo(newData, new ICallback<UserInfo>() {
                     @Override
                     public void onSuccess(UserInfo userInfo) {
-                        makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM);
+                        makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM).show();
                     }
                 });
             }
@@ -105,52 +103,7 @@ public class UserFormFragment extends BaseFragment {
 
     @OnClick(R.id.cancel)
     public void onBackPressed() {
-        onBackPressed();
-    }
-
-/*
-
-    private boolean validateName() {
-        if (name.getText().toString().trim().isEmpty()) {
-            layoutName.setError(R.string.error_name);
-            requestFocus(name);
-            return false;
-        } else {
-            Crouton.makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM);
-        }
-
-        return true;
-    }
-
-    private boolean validateGender() {
-        String email = gender.getText().toString().trim();
-
-        if (email.isEmpty() || !isValidName(email)) {
-            gender.setError(getString(R.string.error_gender));
-            requestFocus(gender);
-            return false;
-        } else {
-            Crouton.makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM);
-        }
-
-        return true;
-    }
-
-    private boolean validateDOB() {
-        if (dob.getText().toString().trim().isEmpty()) {
-            layoutDob.setError(getString(R.string.error_dob));
-            requestFocus(dob);
-            return false;
-        } else {
-            Crouton.makeText(ContextHelper.getContext(), R.string.saved, Style.CONFIRM);
-        }
-
-        return true;
-    }
-*/
-
-    private static boolean isValidName(String name) {
-        return !TextUtils.isEmpty(name) && android.util.Patterns.EMAIL_ADDRESS.matcher(name).matches();
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
     private class MyTextWatcher implements TextWatcher {

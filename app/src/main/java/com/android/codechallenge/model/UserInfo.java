@@ -1,4 +1,5 @@
 package com.android.codechallenge.model;
+
 import android.support.annotation.NonNull;
 import com.common.android.utils.logging.Logger;
 import com.google.gson.annotations.SerializedName;
@@ -7,45 +8,19 @@ import com.orhanobut.wasp.WaspError;
 import static com.common.android.utils.misc.GsonProvider.getGson;
 
 public class UserInfo {
+    public static final String TAG = UserInfo.class.getSimpleName();
     @SerializedName("fname")
     public String firstName;
-
     @SerializedName("lname")
     public String lastName;
-
     @SerializedName("gender")
     public String gender;
-
     @SerializedName("dob")
     public String dateOfBirth;
-
     @SerializedName("__v")
     public int version;
-
     @SerializedName("_id")
     public String userId;
-
-    public static final String TAG = UserInfo.class.getSimpleName();
-
-    public UserInfo setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public UserInfo setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public UserInfo setGender(String gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    public UserInfo setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-        return this;
-    }
 
     @NonNull
     public synchronized static UserResponseModel from(final WaspError waspError) {
@@ -66,6 +41,26 @@ public class UserInfo {
         if (waspError.getResponse() != null)
             waspError.getResponse().getStatusCode();
         return error;
+    }
+
+    public UserInfo setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public UserInfo setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public UserInfo setGender(String gender) {
+        this.gender = gender;
+        return this;
+    }
+
+    public UserInfo setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+        return this;
     }
 
     @Override

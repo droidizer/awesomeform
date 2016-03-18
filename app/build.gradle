@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId "com.android.codechallenge"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -36,21 +36,22 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:design:23.2.0'
     compile 'com.android.support:appcompat-v7:23.2.0'
-    compile('com.github.kibotu:common.android.utils:0.3.6'){
+    // utilities
+    compile('com.github.kibotu:common.android.utils:0.3.6') {
         exclude module: 'support-v4'
         exclude group: 'com.mcxiaoke.volley'
         exclude group: 'com.intellij.annotations'
     }
-    //check connectivity
+    // check connectivity
     compile('com.zplesac:connectionbuddy:1.0.7@aar')
-// injecting views
+    // injecting views
     compile 'com.jakewharton:butterknife:7.0.1'
     //networking
     compile 'com.github.orhanobut:wasp:1.15'
-// floating action button
+    // floating action button
     compile 'com.github.clans:fab:1.6.2'
+    // app message
     compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
-        // exclusion is not necessary, but generally a good idea.
         exclude group: 'com.google.android', module: 'support-v4'
     }
 }

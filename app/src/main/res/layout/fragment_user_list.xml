@@ -20,6 +20,19 @@
             fab:menu_colorNormal="@color/dark_red"
             fab:menu_colorPressed="@color/light_red"
             fab:menu_colorRipple="@color/light_red"
-            android:layout_gravity="bottom|right"/>
+            fab:fab_elevationCompat="4dp"
+            fab:menu_icon="@drawable/ic_action_add"
+            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+            android:layout_gravity="bottom|right">
+
+    <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_edit"
+            fab:fab_size="mini"
+            fab:fab_label="@string/edit" />
+    </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>

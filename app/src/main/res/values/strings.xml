@@ -1,15 +1,16 @@
 <resources>
-    <string name="app_name">CodeChallenge</string>
+    <string name="app_name">Awesome Form</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="connection_error">Connection Error! Please check your connectivity and try again.</string>
-    <string name="description">Bitcoin average market rate for last 60 days</string>
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>
     <string name="hint_name">Name</string>
     <string name="hint_gender">Gender</string>
     <string name="hint_dob">Date of Birth</string>
-    <string name="saved">Thank You! Your data is saved!</string>
+    <string name="saved">FORM SAVED</string>
     <string name="error">An error has occurred!</string>
+    <string name="not_saved">INVALID FORM</string>
+    <string name="edit">Add form</string>
 
 </resources>

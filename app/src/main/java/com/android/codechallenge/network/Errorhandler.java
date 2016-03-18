@@ -2,7 +2,6 @@ package com.android.codechallenge.network;
 
 import android.widget.Toast;
 import com.android.codechallenge.model.UserInfo;
-import com.android.codechallenge.model.UserResponseModel;
 import com.orhanobut.wasp.WaspError;
 
 import static com.common.android.utils.ContextHelper.getContext;
@@ -24,7 +23,7 @@ public class Errorhandler {
     }
 
     public static void showError(WaspError waspError) {
-      //  final UserData error = UserData.from(waspError);
+        //  final UserData error = UserData.from(waspError);
         // showError(error);
     }
 }

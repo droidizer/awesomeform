@@ -11,7 +11,7 @@ import com.common.android.utils.ContextHelper;
 /**
  * Created by greymatter on 14/03/16.
  */
-public class CodeChallengeApplication extends Application {
+public class UserApplication extends Application {
     final ActivityLifecycleCallbacks activityLifecycleCallbacks = createActivityCallBacks();
 
     private ActivityLifecycleCallbacks createActivityCallBacks() {
@@ -52,10 +52,12 @@ public class CodeChallengeApplication extends Application {
             }
         };
     }
+
     private void setContext(Activity activity) {
         if (activity instanceof AppCompatActivity)
             ContextHelper.setContext((FragmentActivity) activity);
     }
+
     @Override
     public void onCreate() {
         super.onCreate();

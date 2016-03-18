@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
-import com.common.android.utils.*;
 import com.common.android.utils.logging.Logger;
 import com.zplesac.connectionbuddy.ConnectionBuddyConfiguration;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
