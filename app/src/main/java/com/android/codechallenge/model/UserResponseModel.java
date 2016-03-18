@@ -2,9 +2,6 @@ package com.android.codechallenge.model;
 
 import java.util.List;
 
-/**
- * Created by greymatter on 17/03/16.
- */
 public class UserResponseModel {
 
     public List<UserInfo> userInfoList;

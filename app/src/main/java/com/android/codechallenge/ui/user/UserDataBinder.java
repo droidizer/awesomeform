@@ -12,9 +12,6 @@ import com.common.android.utils.ui.recyclerView.DataBindAdapter;
 import com.common.android.utils.ui.recyclerView.DataBinder;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Created by greymatter on 17/03/16.
- */
 public class UserDataBinder extends DataBinder<UserInfo, UserDataBinder.ViewHolder> {
 
     public UserDataBinder(@NotNull DataBindAdapter<UserInfo> dataBindAdapter) {
@@ -24,6 +21,7 @@ public class UserDataBinder extends DataBinder<UserInfo, UserDataBinder.ViewHold
     @Override
     public void bindViewHolder(@NotNull ViewHolder viewHolder, int position) {
         final UserInfo item = get(position);
+
         viewHolder.name.setText(item.firstName + " " + item.lastName);
         viewHolder.gender.setText(item.gender);
         viewHolder.dob.setText(item.dateOfBirth);

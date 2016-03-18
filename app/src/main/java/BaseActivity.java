@@ -22,17 +22,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Keep the screen always on
-        if (BuildConfig.DEBUG)
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-        getInstance().init(new ConnectionBuddyConfiguration.Builder(this).build());
-
-        Logger.v(TAG, "[Connection] hasConnection: " + getInstance().hasNetworkConnection());
-        if (!getInstance().hasNetworkConnection()) {
-            makeText(getContext(), connection_error, Toast.LENGTH_LONG).show();
-            makeText(this, connection_error, Style.ALERT);
-        }
     }
 }

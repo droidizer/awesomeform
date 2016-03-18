@@ -7,22 +7,22 @@ import java.util.List;
 public class PersonalInfoForm {
 
     @SerializedName("formID")
-    private String id;
+    public String id;
 
     @SerializedName("formType")
-    private String type;
+    public String type;
 
     @SerializedName("formSubTitle")
-    private String subTitle;
+    public String subTitle;
 
     @SerializedName("controls")
-    private List<Controls> controls;
+    public List<Controls> controls;
 
     @SerializedName("title")
-    private String title;
+    public String title;
 
     @SerializedName("fields")
-    private List<Fields> fields;
+    public List<Fields> fields;
 
     public PersonalInfoForm setSubTitle(String subTitle) {
         this.subTitle = subTitle;
@@ -31,6 +31,11 @@ public class PersonalInfoForm {
 
     public PersonalInfoForm setType(String type) {
         this.type = type;
+        return this;
+    }
+
+    public PersonalInfoForm setTitle(String title) {
+        this.title = title;
         return this;
     }
 
