@@ -16,6 +16,7 @@ import java.net.CookiePolicy;
 import java.util.List;
 
 import static com.common.android.utils.ContextHelper.getContext;
+import static de.keyboardsurfer.android.widget.crouton.Crouton.makeText;
 
 public class RequestProvider {
 
@@ -35,7 +36,7 @@ public class RequestProvider {
         return service;
     }
 
-    private static NetworkService createNetworkService(RemoteRequestInterceptor interceptor) {
+    private static NetworkService createNetworkService(final RemoteRequestInterceptor interceptor) {
         return new Wasp.Builder(getContext())
                 .setEndpoint(Environment.active.baseUrl)
                 .setNetworkMode(MOCK_NETWORK
@@ -47,7 +48,7 @@ public class RequestProvider {
                 .create(NetworkService.class);
     }
 
-    public static WaspRequest userInfo(final ICallback<List<UserInfo>> callback) {
+    public static WaspRequest userInfo(@NonNull final ICallback<List<UserInfo>> callback) {
         return networkService().userInfo(new Callback<List<UserInfo>>() {
 
             @Override
@@ -57,13 +58,12 @@ public class RequestProvider {
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
-                ;
+                makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
             }
         });
     }
 
-    public static WaspRequest updateInfo(final UserInfo userInfo, final ICallback<UserInfo> callback) {
+    public static WaspRequest updateInfo(@NonNull final UserInfo userInfo, @NonNull final ICallback<UserInfo> callback) {
         return networkService().updateInfo(userInfo, new Callback<UserInfo>() {
             @Override
             public void onSuccess(Response response, UserInfo userInfo) {
@@ -72,13 +72,13 @@ public class RequestProvider {
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
+                makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
 
             }
         });
     }
 
-    public static WaspRequest formConstraints(final ICallback<PersonalInfoForm> callback) {
+    public static WaspRequest formConstraints(@NonNull final ICallback<PersonalInfoForm> callback) {
         return networkService().formConstraints(new Callback<PersonalInfoForm>() {
             @Override
             public void onSuccess(Response response, PersonalInfoForm formValidationData) {
@@ -87,8 +87,7 @@ public class RequestProvider {
 
             @Override
             public void onError(WaspError waspError) {
-                Crouton.makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
-                ;
+                makeText(ContextHelper.getContext(), R.string.error, Style.ALERT).show();
             }
         });
     }

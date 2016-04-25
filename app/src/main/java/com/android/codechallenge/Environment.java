@@ -5,7 +5,7 @@ package com.android.codechallenge;
  */
 public enum Environment {
 
-    Development("https://0523aec2.ngrok.io");
+    Development("http://e607e556.ngrok.io");
 
     public static Environment active = Development;
 

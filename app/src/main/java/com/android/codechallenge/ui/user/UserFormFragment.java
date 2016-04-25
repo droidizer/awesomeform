@@ -20,6 +20,7 @@ import com.common.android.utils.interfaces.ICallback;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import org.jetbrains.annotations.NotNull;
 
+import static com.android.codechallenge.FragmentProvider.showUsersFragment;
 import static com.android.codechallenge.network.RequestProvider.formConstraints;
 import static com.android.codechallenge.network.RequestProvider.updateInfo;
 import static de.keyboardsurfer.android.widget.crouton.Crouton.makeText;
@@ -44,9 +45,6 @@ public class UserFormFragment extends BaseFragment {
     @NonNull
     @Bind(R.id.cancel)
     Button cancel;
-    @NonNull
-    @Bind(R.id.title)
-    TextView title;
 
     @Override
     protected void onViewCreated(Bundle savedInstanceState) {
@@ -60,7 +58,6 @@ public class UserFormFragment extends BaseFragment {
             public void onSuccess(PersonalInfoForm personalInfoForm) {
                 if (personalInfoForm.subTitle == null)
                     return;
-                title.setText(personalInfoForm.subTitle);
             }
         });
 
@@ -78,7 +75,7 @@ public class UserFormFragment extends BaseFragment {
                     makeText(ContextHelper.getContext(), R.string.not_saved, Style.INFO).show();
                     return;
                 }
-
+                showUsersFragment();
                 updateInfo(newData, new ICallback<UserInfo>() {
                     @Override
                     public void onSuccess(UserInfo userInfo) {
